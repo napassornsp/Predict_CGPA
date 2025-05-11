@@ -12,7 +12,8 @@ The project is organized into the following directories and files:
 - **`app/`**: This folder contains the Python source code for the web application logic, handling the predictions and user interaction.
 - **`CP_Project_pipeline_final.ipynb`**: The Jupyter notebook that holds the final machine learning pipeline, including data preprocessing, model training, and evaluation.
 - **`student-2018-2023_NEW.xlsx`**: The dataset containing historical data for students from 2018 to 2023, used to train and test the model.
-
+- **`requirement.txt`**: The file lists all the necessary Python libraries for this project. It can be used to set up the project environment easily.
+- 
 ## Dataset Splitting
 To enhance the accuracy of predictions, the dataset was split into three subsets based on the school:
 - **SET**
