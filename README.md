@@ -32,9 +32,9 @@ The following machine learning models were applied to predict first-semester CGP
 - **Random Forest Regressor**
 
 ## Comparative Model Performance
-  - **SET**: Random Forest Regressor got  MSE = 0.0543, R² = 0.7825
-  - **SERD**: Random Forest Regressor got MSE = 0.0506, R² = 0.6473
-  - **SOM**: K-Nearest Neighbors got MSE = 0.1346, R² =  0.0198
+  - **SET**: Random Forest Regressor delivered the best performance which show in the MSE = 0.0543, R² = 0.7825
+  - **SERD**: Random Forest Regressor delivered the best performance which show in the MSE = 0.0506, R² = 0.6473
+  - **SOM**: K-Nearest Neighbors  delivered the best performance which show in the MSE = 0.1346, R² =  0.0198
 
 ## Feature Importance
 The most important features for prediction varied depending on the school, highlighting the unique factors that influence CGPA outcomes at each institution.
