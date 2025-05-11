@@ -3,6 +3,16 @@
 ## Project Overview
 This project predicts the first-semester CGPA of international master's students to identify at-risk students early and provide timely academic support. By using machine learning models, the goal is to improve student success and optimize institutional processes.
 
+## Project Structure
+The project is organized into the following directories and files:
+
+- **`model/`**: Contains the trained models and scripts related to model training and saving.
+- **`static/`**: This folder contains static files like images, CSS, and JavaScript for the front-end of the web application.
+- **`templates/`**: Contains HTML templates for rendering dynamic content in the web application.
+- **`app/`**: This folder contains the Python source code for the web application logic, handling the predictions and user interaction.
+- **`CP_Project_pipeline_final.ipynb`**: The Jupyter notebook that holds the final machine learning pipeline, including data preprocessing, model training, and evaluation.
+- **`student-2018-2023_NEW.xlsx`**: The dataset containing historical data for students from 2018 to 2023, used to train and test the model.
+
 ## Dataset Splitting
 To enhance the accuracy of predictions, the dataset was split into three subsets based on the school:
 - **SET**
@@ -33,6 +43,10 @@ The most important features for prediction varied depending on the school, highl
 - **For Universities**: Helps optimize processes like resource allocation, student enrollment, and retention.
 - **Early Intervention**: Identifies at-risk students for timely academic support.
 - **Institutional Improvement**: Supports data-driven decision-making to improve rankings, retention, and graduation rates.
+
+## How to Use
+1. **Install Dependencies**: Run `pip install -r requirements.txt`.
+2. **Start the Web App**: Launch the application to access the interface and enter student data to predict CGPA.
 
 ## Web Platform
 The prediction model is deployed on a custom web platform with an interactive interface. The platform enables real-time predictions and provides actionable insights to support students.
