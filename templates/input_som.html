@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOM CGPA Predictor</title>
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0 }
+    body {
+      position:relative;
+      font-family:'Arial',sans-serif;
+      background:linear-gradient(135deg,#f0f4ff 0%,#e6f0ff 100%);
+      min-height:100vh;
+      display:flex;align-items:center;justify-content:center;
+    }
+    body::before {
+      content:''; position:absolute; inset:0;
+      background:url('/static/som_bg.jpg') center/cover no-repeat;
+      opacity:0.1; z-index:-1;
+    }
+    .container {
+      width:100%; max-width:500px;
+      padding:30px;
+      background:rgba(255,255,255,0.8);
+      backdrop-filter:blur(12px);
+      border-radius:20px;
+      box-shadow:0 16px 32px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align:center; color:#2c3e50;
+      font-size:1.75rem; margin-bottom:10px;
+      border-bottom:2px solid #4a90e2; padding-bottom:8px;
+    }
+    .instructions {
+      text-align:center; color:#555;
+      font-size:0.95rem; margin-bottom:20px;
+    }
+    .semester-box {
+      background:#fff; border-radius:15px;
+      padding:25px; box-shadow:0 8px 16px rgba(0,0,0,0.05);
+    }
+    .input-group { position:relative; margin-bottom:20px }
+    .input-group label {
+      display:block; font-weight:600; color:#4a5568;
+      margin-bottom:6px;
+    }
+    .input-group input,
+    .input-group select {
+      width:100%; padding:12px 14px;
+      border:2px solid #e2e8f0; border-radius:10px;
+      font-size:1rem; transition:border-color 0.3s,box-shadow 0.3s;
+    }
+    .input-group input:focus,
+    .input-group select:focus {
+      border-color:#4a90e2;
+      box-shadow:0 0 6px rgba(74,144,226,0.4);
+      outline:none;
+    }
+    .help-text {
+      position:absolute; left:0; bottom:-1.4em;
+      font-size:0.85rem; color:#718096;
+      opacity:0; transition:opacity 0.3s;
+      pointer-events:none;
+    }
+    .input-group input:focus + .help-text,
+    .input-group select:focus + .help-text {
+      opacity:1;
+    }
+    .btn-submit {
+      display:block; width:100%; padding:14px 0;
+      margin-top:10px;
+      background:linear-gradient(90deg,#4a90e2,#357abd);
+      color:#fff; font-size:1rem; font-weight:bold;
+      border:none; border-radius:10px; cursor:pointer;
+      transition:background 0.3s,transform 0.2s;
+    }
+    .btn-submit:hover {
+      background:linear-gradient(90deg,#5a9ef4,#4684c1);
+      transform:translateY(-2px);
+    }
+    .creator {
+      text-align:center; margin-top:20px;
+      font-style:italic; color:#718096;
+      font-size:0.9rem;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      document.querySelector('form').addEventListener('submit',e=>{
+        const mid = document.getElementById('average_midterm_grade'),
+              ctr = document.getElementById('Country'),
+              age = document.getElementById('age'),
+              eng = document.getElementById('english_score'),
+              mv  = parseFloat(mid.value),
+              av  = parseFloat(age.value),
+              gv  = parseFloat(eng.value);
+        if(mid.value && (isNaN(mv)||mv<0||mv>4)){
+          e.preventDefault(); alert("Enter valid CGPA for midterm (0–4)."); }
+        if(ctr.value === "") {
+          /* country is required? */
+        }
+        if(age.value && (isNaN(av)||av<0||av>100)){
+          e.preventDefault(); alert("Enter valid age (0–100)."); }
+        if(eng.value && (isNaN(gv)||gv<0||gv>8)){
+          e.preventDefault(); alert("Enter valid English score (0–8)."); }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>SOM CGPA Predictor</h1>
+    <p class="instructions">
+      Fill in the fields below to predict your first-semester CGPA.
+      Missing entries are auto-imputed.
+    </p>
+    <div class="semester-box">
+      <form action="/predict_cgpa_som" method="post">
+
+        <!-- 1: Midterm -->
+        <div class="input-group">
+          <label for="average_midterm_grade">CGPA for Midterm</label>
+          <input type="text" id="average_midterm_grade" name="average_midterm_grade" placeholder="0 – 4">
+          <small class="help-text">
+            Feature importance rank #1.
+          </small>
+        </div>
+
+        <!-- 2: Country -->
+        <div class="input-group">
+          <label for="Country">Country/Region</label>
+          <select id="Country" name="Country">
+            <option value="" disabled selected>— Select Region —</option>
+            <option value="South Asia">South Asia</option>
+            <option value="Southeast Asia">Southeast Asia</option>
+            <option value="West Asia">West Asia</option>
+            <option value="East Asia">East Asia</option>
+            <option value="Other">Other</option>
+          </select>
+          <small class="help-text">
+            Feature importance rank #2.
+          </small>
+        </div>
+
+        <!-- 3: Age -->
+        <div class="input-group">
+          <label for="age">Age</label>
+          <input type="text" id="age" name="age" placeholder="e.g. 20">
+          <small class="help-text">
+            Feature importance rank #3.
+          </small>
+        </div>
+
+        <!-- 4: Gender -->
+        <div class="input-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="" disabled selected>— Select Gender —</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+          </select>
+          <small class="help-text">
+            Feature importance rank #4.
+          </small>
+        </div>
+
+        <!-- 5: English -->
+        <div class="input-group">
+          <label for="english_score">English Score</label>
+          <input type="text" id="english_score" name="english_score" placeholder="0 – 8">
+          <small class="help-text">
+            Feature importance rank #5.
+          </small>
+        </div>
+
+        <!-- 6: Scholarship -->
+        <div class="input-group">
+          <label for="donor">Scholarship Type</label>
+          <select id="donor" name="donor">
+            <option value="" disabled selected>— Select Scholarship —</option>
+            <option value="RTG">RTG</option>
+            <option value="No Scholarship">No Scholarship</option>
+            <option value="Sponsor MOU">Sponsor MOU</option>
+            <option value="HMKING/HMQUEEN">HMKING/HMQUEEN</option>
+            <option value="Other">Other</option>
+          </select>
+          <small class="help-text">
+            Feature importance rank #6
+          </small>
+        </div>
+
+        <button type="submit" class="btn-submit">Calculate CGPA</button>
+      </form>
+    </div>
+    <div class="creator">Created by DoubleA</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semester CGPA Predictor</title>
+  <style>
+      body {
+        position: relative;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      body::before {
+        content: '';
+        position: absolute;
+        top:0; left:0; right:0; bottom:0;
+        background: url('/static/AIT-banner.jpg') center/cover no-repeat;
+        opacity: 0.1;
+        z-index: -1;
+      }
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+    .option-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .option-btn {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      border: 2px solid #e8ecef;
+      border-radius: 15px;
+      background: #f9fafb;
+      color: #4a5568;
+      transition: all 0.3s ease;
+    }
+    .option-btn img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    .option-btn:hover {
+      transform: translateY(-5px);
+      border-color: #4a90e2;
+    }
+    .creator {
+      text-align: center;
+      color: #718096;
+      margin-top: 25px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to our grade prediction website</h1>
+    <h3>Select Your School</h3>
+    <div class="option-group">
+      <a href="/input_set" class="option-btn">
+        <img src="static\set.png" alt="SET Logo">
+        <span>SET</span>
+      </a>
+      <a href="/input_serd" class="option-btn">
+        <img src="static\serd.png" alt="SERD Logo">
+        <span>SERD</span>
+      </a>
+      <a href="/input_som" class="option-btn">
+        <img src="static\som.png" alt="SOM Logo">
+        <span>SOM</span>
+      </a>
+    </div>
+    <div class="creator">
+      Created by DoubleA
+    </div>
+  </div>
+</body>
+</html>
