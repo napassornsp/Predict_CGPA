@@ -1,0 +1,8 @@
+pandas==1.5.3
+numpy==1.24.1
+seaborn==0.11.2
+matplotlib==3.6.2
+scipy==1.9.3
+pickle-mixin==1.0.2
+scikit-learn==1.0.2
+flask==2.1.0  # If you're using Flask for the web app
