@@ -13,7 +13,7 @@ The project is organized into the following directories and files:
 - **`CP_Project_pipeline_final.ipynb`**: The Jupyter notebook that holds the final machine learning pipeline, including data preprocessing, model training, and evaluation.
 - **`student-2018-2023_NEW.xlsx`**: The dataset containing historical data for students from 2018 to 2023, used to train and test the model.
 - **`requirement.txt`**: The file lists all the necessary Python libraries for this project. It can be used to set up the project environment easily.
-- 
+  
 ## Dataset Splitting
 To enhance the accuracy of predictions, the dataset was split into three subsets based on the school:
 - **SET**
@@ -24,7 +24,6 @@ Each dataset was used to train separate models, allowing the prediction to be mo
 
 ## Models Used
 The following machine learning models were applied to predict first-semester CGPA using the three school-specific datasets:
-
 - **Linear Regression**
 - **Ridge, Lasso, Elastic Net** (Regularization-based models)
 - **Support Vector Regression (SVR)**
